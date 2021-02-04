@@ -56,3 +56,16 @@
   {{user.name}}
 </PowerSelectTypeahead>
 
+<h3>Open empty typeahead component</h3>
+
+{{this.number}}
+
+<PowerSelectTypeahead
+  @allowClear=true
+  @selected={{this.number}}
+  @options={{this.numbers}}
+  @search={{action "search"}}
+  @onChange={{action (mut this.number)}}
+  @extra={{hash openEmpty=true}} as |number|>
+  {{number}}
+</PowerSelectTypeahead>

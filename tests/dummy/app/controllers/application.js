@@ -52,7 +52,23 @@ export default Controller.extend({
       }
     },
 
-    search(term) {
+    search(term, select) {
+      this.set('number', term);
+
+      const number = numbers.filter((num) => num.indexOf(term) > -1);
+
+      // if (number.length) {
+      //   run.schedule('actions', null, select.actions.highlight, number[0]);
+      // }
+
+      run.later(function () {
+        select.actions.scrollTo(number[0]);
+        select.actions.highlight(number[0]);
+        // run.schedule('actions', null, select.actions.highlight, number[0]);
+      });
+
+      // return numbers;
+
       return numbers.filter((num) => num.indexOf(term) > -1);
     },
 

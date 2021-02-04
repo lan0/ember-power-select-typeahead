@@ -57,7 +57,11 @@ export default Component.extend({
      * @method stopPropagation
      * @param {Object} event
      */
-    stopPropagation(e) {
+    handleMousedown(e) {
+      if (this.get('extra.openEmpty')) {
+        this.get('select.actions').search('');
+        return;
+      }
       e.stopPropagation();
     },
 
